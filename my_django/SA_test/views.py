@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from dwebsocket.decorators import accept_websocket,require_websocket
-from SA_test.models import client_info
+from SA_test.models import computer_info,computer
+
 # Create your views here.
 
 
@@ -31,7 +32,7 @@ def echo(request):
             return render(request,'index.html')
     else:
         while 1==1:
-                list_s = client_info.objects.all().reverse()[0]
+                list_s = computer_info.objects.all().reverse()[0]
                 print(list_s)
                 print(list_s.cpu_info)
                 request.websocket.send(str(list_s.cpu_info))#发送消息到客户端
