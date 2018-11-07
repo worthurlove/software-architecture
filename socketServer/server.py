@@ -28,11 +28,13 @@ class Handler(BaseRequestHandler):
                 print('收到=', input_data)
                 try:
                     print(input_data[0])
-                    a = int(input_data[0])
-                    b = float(input_data[1])
-                    print(a,b)
+                    a = input_data[0]
+                    b = input_data[1]
+                    c = input_data[2]
+                    print(a,b,c)
                     # 执行sql语句
-                    cursor.execute("INSERT INTO sa_test_client_info (client_id,cpu_info) values ({},{})".format(a, b))
+                    print("'{}','{}','{}'".format(a,b,c))
+                    cursor.execute("INSERT INTO `sa_work`.`sa_test_computer_info` (`cpu_info`, `info_time`, `computer_id_id`) VALUES ('{0}', '{1}', '{2}')".format(a,b,c))
                     # 提交到数据库执行
                     db.commit()
                     print('插入成功')

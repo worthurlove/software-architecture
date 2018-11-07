@@ -1,13 +1,9 @@
 #coding:utf-8
 '''
-file:client.py
-date:9/9/17 3:43 PM
-author:lockey
-email:lockey@123.com
-desc:socket编程客户端，python3.6.2
+client1模拟客户端1
 '''
-import socket,sys,datetime,time
-HOST = '120.79.70.119'
+import socket,sys,datetime,time,random
+HOST = 'localhost'
 PORT = 5000
 ADDR =(HOST,PORT)
 BUFSIZE = 1024
@@ -17,9 +13,10 @@ try:
     sock.connect(ADDR)
     print('have connected with server')
 
-# while True:
-    for i in range(10):
-        data = str(i)+','+str(i/5)
+    while True:
+        time_insert=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        cpu_percent = random.random()
+        data = str(cpu_percent)+','+str(time_insert)+',1'
         print(len(data))
         if 1==1:
             print('send1:',data)
@@ -28,7 +25,7 @@ try:
             print('receive:',recv_data)
         else:
             sock.close()
-            break
+            # break
         time.sleep(1)
 except Exception:
     print('error')

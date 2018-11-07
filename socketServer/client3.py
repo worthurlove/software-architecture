@@ -1,6 +1,6 @@
 #coding:utf-8
 '''
-client2模拟客户端2
+client3模拟客户端3
 '''
 import socket,sys,datetime,time,random
 HOST = 'localhost'
@@ -16,7 +16,7 @@ try:
     while True:
         time_insert=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         cpu_percent = random.random()
-        data = str(cpu_percent)+','+str(time_insert)+',2'
+        data = str(cpu_percent)+','+str(time_insert)+',3'
         print(len(data))
         if 1==1:
             print('send1:',data)
