@@ -34,6 +34,7 @@ class Handler(BaseRequestHandler):
                     print(a,b,c)
                     # 执行sql语句
                     print("'{}','{}','{}'".format(a,b,c))
+                    db.ping(reconnect=True)
                     cursor.execute("INSERT INTO `sa_work`.`sa_test_computer_info` (`cpu_info`, `info_time`, `computer_id_id`) VALUES ('{0}', '{1}', '{2}')".format(a,b,c))
                     # 提交到数据库执行
                     db.commit()

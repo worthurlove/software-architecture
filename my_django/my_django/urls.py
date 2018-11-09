@@ -20,7 +20,7 @@ from SA_test import views as SA_test_views
 urlpatterns = [
     path('', SA_test_views.index,name = 'index'),  #添加的第一个视图
     # path('add/',SA_test_views.add,name='add'),#加法计算视图
-    # path('add3/',SA_test_views.add2,name='add2'),
+    path('add/',SA_test_views.add2,name='add2'),
     path('admin/', admin.site.urls),
     path('echo', SA_test_views.echo, name='echo'),
 ]

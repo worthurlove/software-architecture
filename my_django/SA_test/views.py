@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from dwebsocket.decorators import accept_websocket,require_websocket
 from SA_test.models import computer_info,computer
+import time
 
 # Create your views here.
 
@@ -17,10 +18,10 @@ def index(request):
 #     c = int(a)+int(b)
 #     return HttpResponse(str(c))
 
-# def add2(request):
-#     test1 = client_info(client_id = 11,cpu_info=0.23)
-#     test1.save()
-#     return render(request,'add2.html')
+def add2(request):
+    # test1 = client_info(client_id = 11,cpu_info=0.23)
+    # test1.save()
+    return render(request,'add2.html')
 
 @accept_websocket
 def echo(request):
@@ -31,8 +32,13 @@ def echo(request):
         except:
             return render(request,'index.html')
     else:
-        while 1==1:
-                list_s = computer_info.objects.all().reverse()[0]
-                print(list_s)
-                print(list_s.cpu_info)
-                request.websocket.send(str(list_s.cpu_info))#发送消息到客户端
+        while True:
+                list_s_1 = computer_info.objects.filter(computer_id_id = 1).last()
+                list_s_2 = computer_info.objects.filter(computer_id_id = 2).last()
+                list_s_3 = computer_info.objects.filter(computer_id_id = 3).last()
+                # print(list_s)
+                request.websocket.send(str(list_s_1.cpu_info)+' '+ str(list_s_1.computer_id_id)+' '+
+                str(list_s_2.cpu_info)+' '+ str(list_s_2.computer_id_id)+' '+
+                str(list_s_3.cpu_info)+' '+ str(list_s_3.computer_id_id)
+                )#发送消息到客户端
+                time.sleep(1)
